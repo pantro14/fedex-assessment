@@ -1,4 +1,11 @@
 import {Validators} from '@angular/forms';
+import {verifyLowerAndUpperCase} from '../utils/custom-validators/email-validators';
+
+export const passwordValidators =  [
+  Validators.required,
+  Validators.minLength(8),
+  verifyLowerAndUpperCase(),
+];
 
 export const signUpFormControl = {
   firstName: [
@@ -24,9 +31,6 @@ export const signUpFormControl = {
   ],
   password: [
     '',
-    [
-      Validators.required,
-      Validators.minLength(2),
-    ]
+    passwordValidators
   ],
 }
