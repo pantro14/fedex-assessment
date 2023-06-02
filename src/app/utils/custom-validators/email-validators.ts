@@ -11,6 +11,7 @@ export const verifyLowerAndUpperCase = (): ValidatorFn => {
 }
 
 const hasForbiddenWords = (word: string, firstName: string, lastName: string) => {
+  // skip validation if first name and last name are empty string
   const isFirstNamePresent = firstName === '' ? false : word.toLowerCase().includes(firstName.toLowerCase());
   const isLastNamePresent = lastName === '' ? false : word.toLowerCase().includes(lastName.toLowerCase());
   return isFirstNamePresent || isLastNamePresent;

@@ -14,6 +14,8 @@ import {verifyForbidWords} from '../../utils/custom-validators/email-validators'
 export class SignUpComponent {
   signUpForm;
 
+  passwordType = 'password';
+
   constructor(
     private formBuilder: FormBuilder,
   ) {
@@ -41,8 +43,14 @@ export class SignUpComponent {
     this.password?.updateValueAndValidity();
   }
 
+  togglePasswordView(): void {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+  }
+
   submitForm(): void {
-    console.log('form submitted');
+    if(!this.signUpForm.invalid) {
+      // ready to consumer the server
+    }
   }
 
 }
