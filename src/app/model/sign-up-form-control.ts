@@ -12,21 +12,19 @@ export const signUpFormControl = {
     '',
     [
       Validators.required,
-      Validators.minLength(5),
     ]
   ],
   lastName: [
     '',
     [
       Validators.required,
-      Validators.minLength(2),
     ]
   ],
   email: [
     '',
     [
       Validators.required,
-      Validators.minLength(2),
+      Validators.email
     ]
   ],
   password: [

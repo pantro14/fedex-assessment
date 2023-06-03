@@ -3,20 +3,24 @@ import { CommonModule } from '@angular/common';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {passwordValidators, signUpFormControl} from '../../model/sign-up-form-control';
 import {verifyForbidWords} from '../../utils/custom-validators/email-validators';
-import {Observable} from 'rxjs';
+import {finalize, Observable} from 'rxjs';
 import {Registration} from '../../model/registration';
 import {RegisterService} from '../../services/register/register.service';
+import {LetDirective} from '@ngrx/component';
+import {ErrorMessageComponent} from '../../common/error-message/error-message.component';
+import {SuccessMessageComponent} from '../../common/success-message/success-message.component';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, LetDirective, ErrorMessageComponent, SuccessMessageComponent],
   templateUrl: './sign-up.component.html',
   styles: [],
 })
 export class SignUpComponent {
   signUpForm;
   registration$: Observable<Registration>;
+  loading: boolean;
 
   passwordType = 'password';
 
@@ -54,11 +58,14 @@ export class SignUpComponent {
 
   submitForm(): void {
     if(!this.signUpForm.invalid) {
+      this.loading = true;
       this.registration$ = this.registerService.postRegistration$({
         firstName: this.firstName?.value as string,
         lastName: this.lastName?.value as string,
         email: this.email?.value as string,
-      })
+      }).pipe(
+        finalize(() => this.loading = false)
+      )
     }
   }
 

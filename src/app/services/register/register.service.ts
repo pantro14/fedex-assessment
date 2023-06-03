@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Registration, RegistrationBody} from '../../model/registration';
-import {BASE_URL} from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  baseUrl;
-  constructor(private readonly http: HttpClient) {
-    this.baseUrl = BASE_URL;
-  }
+  constructor(private readonly http: HttpClient) {}
 
   postRegistration$(registrationBody: RegistrationBody): Observable<Registration> {
-    const URL = `${this.baseUrl}/users`;
+    const URL = `/api/users`;
     return this.http.post<Registration>(URL, registrationBody);
   }
 }
