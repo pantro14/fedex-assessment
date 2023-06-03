@@ -1,27 +1,52 @@
-# FedexAssessment
+# Fedex Assessment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+This is just a repo for a single page app built with Angular 16 to show Fedex why I should be hired 😜
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Build a single page app with a sign-up form.
 
-## Code scaffolding
+1. The form should allow users to enter first name, last name, email, and password.
+2. All fields are required.
+3. Password validation:
+   * Should be a minimum of eight characters,
+   * Should contain lower and uppercase letters,
+   * Should not contain user's first or last name.
+4. Email should be validated but there are various ways of accomplishing this. So, show us what you consider as a proper email validation.
+5. The form should send a POST request to https://demo-api.now.sh/users. The request body example:
+```
+{
+  firstName: "Thomas",
+  lastName: "Shelby",
+  email: "thomas@shelby.co.uk"
+}
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Solution
+I have solved all the requirements exposed in the description.
+You can see a live solution hosted in a public firebase project:
+* https://fedex-assessment-c90ee.web.app/sign-up
 
-## Build
+I have made this extra [Google Document](https://docs.google.com/document/d/1jf0HqdzuIn1lYAZGUwYJU30kgdvoLf_FCOxf8leR1QU/edit?usp=sharing) containing detailed explanations of the use case scenarios and user requirements
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Run App locally
+
+use `npm run start` and after that open this link: http://localhost:4200/ you'll be redirected to the sign up page form.
+
+## Deploy to Dev
+
+run the `npm run deploy:dev`, which basically is running these 2 processes sequentially:
+ * Build the app in development mode: `npm run build:dev`
+ * Deploy bundle in firebase project: `firebase deploy`
+
+For more information about how to Host a project in Firebase you can have a look here: https://firebase.google.com/docs/hosting/quickstart
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Running e2e tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng e2e` to execute e2e test via Protractor.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
