@@ -13,7 +13,7 @@
     "test:ci": "jest --runInBand",
     "e2e": "npx wdio run test/wdio.conf.ts",
     "lint": "ng lint",
-    "pretty": "prettier --check --write 'src/**/*.{js,ts,scss,css,json,html}'"
+    "pretty-code": "prettier --check --write 'src/**/*.{js,ts,scss,css,json,html}'"
   },
   "private": true,
   "dependencies": {

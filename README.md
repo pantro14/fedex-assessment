@@ -42,12 +42,18 @@ run the `npm run deploy:dev`, which basically is running these 2 processes seque
 
 For more information about how to Host a project in Firebase you can have a look here: https://firebase.google.com/docs/hosting/quickstart
 
+** Disclaimer ** : `firebase deploy` won't work unless you first do `firebase login` and authenticate with my personal credentials.
+
+## Run Prettier 💅
+
+Run `npm run pretty-code` this will run [Prettier](https://prettier.io/) which makes the code more readable for human beings.
+
 ## Running unit tests 🚦
 
 Run `ng test` to execute the unit tests via [Jest](https://jestjs.io/).
 
 ### Code Coverage Report: 
-Jest is configured to generate reports using [istanbul](https://istanbul.js.org/) you can find the report inside folder and opening the .html file `coverage/lcov-report/index.html`
+Jest is configured to generate reports using [istanbul](https://istanbul.js.org/), you can find the report opening the following file `coverage/lcov-report/index.html`
 
 
 ## Running e2e tests 🚦
