@@ -1,6 +1,6 @@
 # Fedex Assessment 📪
 
-This is just a repo for a single page app built with Angular 16 to show Fedex why I should be hired 😜
+This is just a repo for a single page app built with Angular 16 to solve the code challenge provided by Fedex 😎
 
 ## Description 🗒️
 
@@ -23,7 +23,9 @@ Build a single page app with a sign-up form.
 ```
 
 ## Solution 🤖
-I have solved all the requirements exposed in the description.
+I have created an Angular 16 web app, including standalone components and enhancing the UI and styling with the popular and powerful [tailwindcss](https://tailwindcss.com/) library. 
+
+I have solved all the requirements exposed in the description. 
 You can see a live solution hosted in a public firebase project:
 * https://fedex-assessment-c90ee.web.app/sign-up
 
