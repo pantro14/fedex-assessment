@@ -71,7 +71,7 @@ describe('SignUpComponent', () => {
     jest.spyOn(component.firstNameSubscription, 'unsubscribe');
     jest.spyOn(component.lastNameSubscription, 'unsubscribe');
     component.ngOnDestroy();
-    expect(component.firstNameSubscription.unsubscribe).toHaveBeenCalled()
-    expect(component.lastNameSubscription.unsubscribe).toHaveBeenCalled()
+    expect(component.firstNameSubscription.unsubscribe).toHaveBeenCalled();
+    expect(component.lastNameSubscription.unsubscribe).toHaveBeenCalled();
   });
 });
