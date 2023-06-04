@@ -1,5 +1,3 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ErrorMessageComponent } from './error-message.component';
 
 describe('ErrorMessageComponent', () => {
@@ -10,6 +8,6 @@ describe('ErrorMessageComponent', () => {
   });
 
   it('should create component', () => {
-    expect(component).toBeDefined()
+    expect(component).toBeDefined();
   });
 });

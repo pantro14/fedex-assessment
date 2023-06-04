@@ -1,9 +1,9 @@
-import {fakeAsync, tick} from '@angular/core/testing';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 import { SignUpComponent } from './sign-up.component';
-import {RegisterService} from '../../services/register/register.service';
-import {FormBuilder} from '@angular/forms';
-import {of} from 'rxjs';
+import { RegisterService } from '../../services/register/register.service';
+import { FormBuilder } from '@angular/forms';
+import { of } from 'rxjs';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
@@ -12,7 +12,7 @@ describe('SignUpComponent', () => {
     _id: 'id',
     firstName: 'Homer',
     lastName: 'Simpson',
-    email: 'homer@simpsons.com'
+    email: 'homer@simpsons.com',
   };
 
   const mockRegisterService = {
@@ -20,10 +20,7 @@ describe('SignUpComponent', () => {
   } as unknown as RegisterService;
 
   beforeEach(() => {
-    component = new SignUpComponent(
-      new FormBuilder(),
-      mockRegisterService
-    )
+    component = new SignUpComponent(new FormBuilder(), mockRegisterService);
   });
 
   it('should create the component', () => {
@@ -31,7 +28,10 @@ describe('SignUpComponent', () => {
   });
 
   it('should update password validators when first name changes', fakeAsync(() => {
-    const spyUpdatePasswordValidator = jest.spyOn(component, 'updatePasswordValidators');
+    const spyUpdatePasswordValidator = jest.spyOn(
+      component,
+      'updatePasswordValidators'
+    );
     component.signUpForm.controls['firstName'].setValue('Homer');
     tick();
     expect(spyUpdatePasswordValidator).toHaveBeenCalled();
@@ -54,8 +54,8 @@ describe('SignUpComponent', () => {
     component.registration$.subscribe({
       next: (result) => {
         expect(result).toBe(registrationMock);
-      }
-    })
+      },
+    });
     tick();
   }));
 

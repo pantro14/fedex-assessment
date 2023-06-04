@@ -1,5 +1,3 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SuccessMessageComponent } from './success-message.component';
 
 describe('SuccessMessageComponent', () => {
@@ -10,6 +8,6 @@ describe('SuccessMessageComponent', () => {
   });
 
   it('should create component', () => {
-    expect(component).toBeDefined()
+    expect(component).toBeDefined();
   });
 });

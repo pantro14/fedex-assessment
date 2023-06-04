@@ -13,19 +13,16 @@
     </p>
     <div class="space-y-9 py-9">
       <div class="mb-4">
-        <label
-          for="first-name"
-          class="mb-1 text-sm tracking-wide text-gray-600"
+        <label for="first-name" class="mb-1 text-sm tracking-wide text-gray-600"
           >First Name</label
         >
         <div class="relative">
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/first-name.svg"/>
+            <img src="assets/first-name.svg" alt="first-name"/>
           </div>
           <input
-            autofocus
             type="text"
             id="first-name"
             name="first-name"
@@ -34,23 +31,24 @@
             placeholder="Enter your first name"
           />
         </div>
-        <div *ngIf="ngForm.submitted && signUpForm.invalid" class="text-sm pt-1 pl-1 text-red-500">
-          <span *ngIf="firstName?.errors?.['required']" >
+        <div
+          *ngIf="ngForm.submitted && signUpForm.invalid"
+          class="text-sm pt-1 pl-1 text-red-500"
+        >
+          <span id="required-first-name" *ngIf="firstName?.errors?.['required']">
             First name required
           </span>
         </div>
       </div>
       <div class="mb-4">
-        <label
-          for="last-name"
-          class="mb-1 text-sm tracking-wide text-gray-600"
-        >Last Name</label
+        <label for="last-name" class="mb-1 text-sm tracking-wide text-gray-600"
+          >Last Name</label
         >
         <div class="relative">
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/last-name.svg"/>
+            <img src="assets/last-name.svg" alt="last-name"/>
           </div>
           <input
             type="text"
@@ -61,23 +59,24 @@
             placeholder="Enter your last name"
           />
         </div>
-        <div *ngIf="ngForm.submitted && signUpForm.invalid" class="text-sm pt-1 pl-1 text-red-500">
-          <span *ngIf="lastName?.errors?.['required']" >
+        <div
+          *ngIf="ngForm.submitted && signUpForm.invalid"
+          class="text-sm pt-1 pl-1 text-red-500"
+        >
+          <span id="required-last-name" *ngIf="lastName?.errors?.['required']">
             Last name required
           </span>
         </div>
       </div>
       <div class="mb-4">
-        <label
-          for="email"
-          class="mb-1 text-sm tracking-wide text-gray-600"
-        >Email</label
+        <label for="email" class="mb-1 text-sm tracking-wide text-gray-600"
+          >Email</label
         >
         <div class="relative">
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/email.svg"/>
+            <img src="assets/email.svg" alt="email"/>
           </div>
           <input
             type="email"
@@ -88,28 +87,33 @@
             placeholder="Enter your email"
           />
         </div>
-        <div *ngIf="ngForm.submitted && signUpForm.invalid" class="text-sm pt-1 pl-1 text-red-500 ">
-          <span *ngIf="email?.errors?.['required'] else emailValidation" >
-            email required
+        <div
+          *ngIf="ngForm.submitted && signUpForm.invalid"
+          class="text-sm pt-1 pl-1 text-red-500"
+        >
+          <span id="required-email" *ngIf="email?.errors?.['required'] else emailValidation">
+            Email required
           </span>
           <ng-template #emailValidation>
-            <span *ngIf="email?.errors?.['email']" class="text-sm text-red-500 italic">
+            <span
+              id="invalid-format-email"
+              *ngIf="email?.errors?.['email']"
+              class="text-sm text-red-500 italic"
+            >
               Invalid email format
             </span>
           </ng-template>
         </div>
       </div>
       <div class="mb-4">
-        <label
-          for="password"
-          class="mb-1 text-sm tracking-wide text-gray-600"
-        >Password</label
+        <label for="password" class="mb-1 text-sm tracking-wide text-gray-600"
+          >Password</label
         >
         <div class="relative">
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/password.svg"/>
+            <img src="assets/password.svg" alt="password"/>
           </div>
           <input
             [type]="passwordType"
@@ -120,42 +124,75 @@
             autocomplete
             placeholder="Enter your password"
           />
-          <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-            <img (click)="togglePasswordView()" *ngIf="passwordType === 'password'" src="assets/view-password.svg"/>
-            <img (click)="togglePasswordView()" *ngIf="passwordType === 'text'" src="assets/unview-password.svg"/>
+          <div
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+          >
+            <img
+              tabindex="0"
+              (click)="togglePasswordView()"
+              (keydown)="togglePasswordView()"
+              *ngIf="passwordType === 'password'"
+              src="assets/view-password.svg"
+              alt="view-password"
+            />
+            <img
+              tabindex="0"
+              (click)="togglePasswordView()"
+              (keydown)="togglePasswordView()"
+              *ngIf="passwordType === 'text'"
+              src="assets/unview-password.svg"
+              alt="unview-password"
+            />
           </div>
         </div>
-        <div *ngIf="ngForm.submitted && signUpForm.invalid" class="text-sm pt-1 pl-1 text-red-500">
-          <span *ngIf="password?.errors?.['required'] else passwordMinLength" >
+        <div
+          *ngIf="ngForm.submitted && signUpForm.invalid"
+          class="text-sm pt-1 pl-1 text-red-500"
+        >
+          <span id="required-password" *ngIf="password?.errors?.['required'] else passwordMinLength">
             Password required
           </span>
           <ng-template #passwordMinLength>
-            <span *ngIf="password?.errors?.['minlength'] else passwordLowerUpperCase" class="text-sm text-red-500 italic">
-              minimum of eight characters
+            <span
+              id="min-length-password"
+              *ngIf="password?.errors?.['minlength'] else passwordLowerUpperCase"
+              class="text-sm text-red-500 italic"
+            >
+              Minimum of eight characters
             </span>
           </ng-template>
           <ng-template #passwordLowerUpperCase>
-            <span *ngIf="password?.errors?.['lowerUpperCase'] else passwordForbiddenWords" class="text-sm text-red-500 italic">
+            <span
+              id="at-least-lower-upper-password"
+              *ngIf="password?.errors?.['lowerUpperCase'] else passwordForbiddenWords"
+              class="text-sm text-red-500 italic"
+            >
               At least one small and/or capital letter is missing
             </span>
           </ng-template>
           <ng-template #passwordForbiddenWords>
-            <span *ngIf="password?.errors?.['forbiddenWords']" class="text-sm text-red-500 italic">
+            <span
+              id="forbidden-words-password"
+              *ngIf="password?.errors?.['forbiddenWords']"
+              class="text-sm text-red-500 italic"
+            >
               Should not contain first name or last name
             </span>
           </ng-template>
         </div>
       </div>
     </div>
-    <ng-container *ngrxLet="
-        registration$ as registration;
-        error as error;
-    ">
+    <ng-container *ngrxLet="registration$ as registration; error as error">
       <app-success-message *ngIf="registration && !error">
-        <p message id="success">Registration form has been successfully sent and saved in our servers</p>
+        <p message id="success">
+          Registration form has been successfully sent and saved in our servers
+        </p>
       </app-success-message>
       <app-error-message *ngIf="error">
-        <p message id="error">Error occurred while trying to connect to the server, please try again later.</p>
+        <p message id="error">
+          Error occurred while trying to connect to the server, please try again
+          later.
+        </p>
       </app-error-message>
     </ng-container>
     <div class="flex justify-center">
@@ -164,13 +201,28 @@
         type="submit"
       >
         <div class="flex justify-center w-full items-center">
-          <svg *ngIf="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          <svg
+            *ngIf="loading"
+            class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
           </svg>
-          <span>
-            Sign Up
-          </span>
+          <span> Sign Up </span>
         </div>
       </button>
     </div>

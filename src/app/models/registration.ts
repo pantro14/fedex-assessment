@@ -5,4 +5,7 @@ export interface Registration {
   lastName: string;
 }
 
-export type RegistrationBody = Pick<Registration, "email" | "firstName" | "lastName">;
+export type RegistrationBody = Pick<
+  Registration,
+  'email' | 'firstName' | 'lastName'
+>;

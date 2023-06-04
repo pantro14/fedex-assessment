@@ -48,6 +48,10 @@ For more information about how to Host a project in Firebase you can have a look
 
 Run `npm run pretty-code` this will run [Prettier](https://prettier.io/) which makes the code more readable for human beings.
 
+## Run Lint 🧹
+
+Run `npm run lint` this will make sure the code is consistent with eslint standards
+
 ## Running unit tests 🚦
 
 Run `ng test` to execute the unit tests via [Jest](https://jestjs.io/).
@@ -62,5 +66,7 @@ E2e test have been configured with WebdriverIO + Jasmine + Typescript compiler.
 To run the integration test you will require to use 2 different terminals:
  * In terminal 1: `npm run start` to start the app.
  * In terminal 2: `npm run e2e` to execute e2e test via WebdriverIO conf file.
+
+
 
 

@@ -1,4 +1,7 @@
-import {hasForbiddenWords, hasLowerAndUpperCase} from './password-validations';
+import {
+  hasForbiddenWords,
+  hasLowerAndUpperCase,
+} from './password-validations';
 
 describe('Password Validations', () => {
   it('should check if password has upper OR lowercase', () => {
@@ -15,7 +18,9 @@ describe('Password Validations', () => {
   it('should check if password has forbidden words', () => {
     expect(hasForbiddenWords('homer1234', 'homer', 'simpson')).toBeTruthy();
     expect(hasForbiddenWords('12345simpson', 'homer', 'simpson')).toBeTruthy();
-    expect(hasForbiddenWords('homer1234simpson', 'homer', 'simpson')).toBeTruthy();
+    expect(
+      hasForbiddenWords('homer1234simpson', 'homer', 'simpson')
+    ).toBeTruthy();
     // case sensitive
     expect(hasForbiddenWords('homer1234', 'Homer', 'simpson')).toBeTruthy();
     expect(hasForbiddenWords('12345Simpson', 'homer', 'simpson')).toBeTruthy();
