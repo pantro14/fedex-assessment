@@ -23,7 +23,7 @@ Build a single page app with a sign-up form.
 ```
 
 ## Solution 🤖
-I have created an Angular 16 web app, including standalone components and enhancing the UI and styling with the popular and powerful [tailwindcss](https://tailwindcss.com/) library. 
+I have created an Angular 16 web app, including standalone components and enhancing the UI and styling with the popular and powerful [tailwindcss](https://tailwindcss.com/) framework. 
 
 I have solved all the requirements exposed in the description. 
 You can see a live solution hosted in a public firebase project:
