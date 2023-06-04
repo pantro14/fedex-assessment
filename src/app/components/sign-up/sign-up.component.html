@@ -152,10 +152,10 @@
         error as error;
     ">
       <app-success-message *ngIf="registration && !error">
-        <p message>Registration form has been successfully sent and saved in our servers</p>
+        <p message id="success">Registration form has been successfully sent and saved in our servers</p>
       </app-success-message>
       <app-error-message *ngIf="error">
-        <p message>Error occurred while trying to connect to the server, please try again later.</p>
+        <p message id="error">Error occurred while trying to connect to the server, please try again later.</p>
       </app-error-message>
     </ng-container>
     <div class="flex justify-center">
