@@ -1,8 +1,8 @@
-# Fedex Assessment
+# Fedex Assessment 📪
 
 This is just a repo for a single page app built with Angular 16 to show Fedex why I should be hired 😜
 
-## Description
+## Description 🗒️
 
 Build a single page app with a sign-up form.
 
@@ -22,7 +22,7 @@ Build a single page app with a sign-up form.
 }
 ```
 
-## Solution
+## Solution 🤖
 I have solved all the requirements exposed in the description.
 You can see a live solution hosted in a public firebase project:
 * https://fedex-assessment-c90ee.web.app/sign-up
@@ -30,11 +30,11 @@ You can see a live solution hosted in a public firebase project:
 I have made this extra [Google Document](https://docs.google.com/document/d/1jf0HqdzuIn1lYAZGUwYJU30kgdvoLf_FCOxf8leR1QU/edit?usp=sharing) containing detailed explanations of the use case scenarios and user requirements
 
 
-## Run App locally
+## Run App locally 💻
 
 use `npm run start` and after that open this link: http://localhost:4200/ you'll be redirected to the sign up page form.
 
-## Deploy to Dev
+## Deploy to Dev 🦾
 
 run the `npm run deploy:dev`, which basically is running these 2 processes sequentially:
  * Build the app in development mode: `npm run build:dev`
@@ -42,11 +42,19 @@ run the `npm run deploy:dev`, which basically is running these 2 processes seque
 
 For more information about how to Host a project in Firebase you can have a look here: https://firebase.google.com/docs/hosting/quickstart
 
-## Running unit tests
+## Running unit tests 🚦
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Jest](https://jestjs.io/).
 
-## Running e2e tests
+### Code Coverage Report: 
+Jest is configured to generate reports using [istanbul](https://istanbul.js.org/) you can find the report inside folder and opening the .html file `coverage/lcov-report/index.html`
 
-Run `ng e2e` to execute e2e test via Protractor.
+
+## Running e2e tests 🚦
+E2e test have been configured with WebdriverIO + Jasmine + Typescript compiler.
+
+To run the integration test you will require to use 2 different terminals:
+ * In terminal 1: `npm run start` to start the app.
+ * In terminal 2: `npm run e2e` to execute e2e test via WebdriverIO conf file.
+
 
