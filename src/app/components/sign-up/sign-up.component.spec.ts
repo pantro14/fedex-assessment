@@ -66,4 +66,12 @@ describe('SignUpComponent', () => {
     component.togglePasswordView();
     expect(component.passwordType).toBe('text');
   });
+
+  it('should test on destroy method', () => {
+    jest.spyOn(component.firstNameSubscription, 'unsubscribe');
+    jest.spyOn(component.lastNameSubscription, 'unsubscribe');
+    component.ngOnDestroy();
+    expect(component.firstNameSubscription.unsubscribe).toHaveBeenCalled()
+    expect(component.lastNameSubscription.unsubscribe).toHaveBeenCalled()
+  });
 });

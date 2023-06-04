@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -6,7 +6,7 @@ import {
   signUpFormControl,
 } from '../../models/sign-up-form-control';
 import { verifyForbidWords } from '../../utils/custom-validators/password/password-validations';
-import { finalize, Observable } from 'rxjs';
+import { finalize, Observable, Subscription } from 'rxjs';
 import { Registration } from '../../models/registration';
 import { RegisterService } from '../../services/register/register.service';
 import { LetDirective } from '@ngrx/component';
@@ -26,10 +26,13 @@ import { SuccessMessageComponent } from '../../common/success-message/success-me
   templateUrl: './sign-up.component.html',
   styles: [],
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnDestroy {
   signUpForm;
   registration$: Observable<Registration>;
   loading: boolean;
+
+  firstNameSubscription: Subscription | undefined;
+  lastNameSubscription: Subscription | undefined;
 
   passwordType = 'password';
 
@@ -39,13 +42,17 @@ export class SignUpComponent {
   ) {
     this.signUpForm = this.formBuilder.group(signUpFormControl);
     // Password validation must be updated every time first name and last name change
-    this.firstName?.valueChanges.subscribe({
+    this.firstNameSubscription = this.firstName?.valueChanges.subscribe({
       next: () => this.updatePasswordValidators(),
     });
-    // TODO: unsubscribe on destroy
-    this.lastName?.valueChanges.subscribe({
+    this.lastNameSubscription = this.lastName?.valueChanges.subscribe({
       next: () => this.updatePasswordValidators(),
     });
+  }
+
+  ngOnDestroy() {
+    this.firstNameSubscription?.unsubscribe();
+    this.lastNameSubscription?.unsubscribe();
   }
 
   get firstName() {
