@@ -20,7 +20,7 @@
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/first-name.svg" alt="first-name"/>
+            <img src="assets/first-name.svg" alt="first-name" />
           </div>
           <input
             type="text"
@@ -35,7 +35,10 @@
           *ngIf="ngForm.submitted && signUpForm.invalid"
           class="text-sm pt-1 pl-1 text-red-500"
         >
-          <span id="required-first-name" *ngIf="firstName?.errors?.['required']">
+          <span
+            id="required-first-name"
+            *ngIf="firstName?.errors?.['required']"
+          >
             First name required
           </span>
         </div>
@@ -48,7 +51,7 @@
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/last-name.svg" alt="last-name"/>
+            <img src="assets/last-name.svg" alt="last-name" />
           </div>
           <input
             type="text"
@@ -76,7 +79,7 @@
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/email.svg" alt="email"/>
+            <img src="assets/email.svg" alt="email" />
           </div>
           <input
             type="email"
@@ -91,7 +94,10 @@
           *ngIf="ngForm.submitted && signUpForm.invalid"
           class="text-sm pt-1 pl-1 text-red-500"
         >
-          <span id="required-email" *ngIf="email?.errors?.['required'] else emailValidation">
+          <span
+            id="required-email"
+            *ngIf="email?.errors?.['required'] else emailValidation"
+          >
             Email required
           </span>
           <ng-template #emailValidation>
@@ -113,7 +119,7 @@
           <div
             class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
           >
-            <img src="assets/password.svg" alt="password"/>
+            <img src="assets/password.svg" alt="password" />
           </div>
           <input
             [type]="passwordType"
@@ -149,7 +155,10 @@
           *ngIf="ngForm.submitted && signUpForm.invalid"
           class="text-sm pt-1 pl-1 text-red-500"
         >
-          <span id="required-password" *ngIf="password?.errors?.['required'] else passwordMinLength">
+          <span
+            id="required-password"
+            *ngIf="password?.errors?.['required'] else passwordMinLength"
+          >
             Password required
           </span>
           <ng-template #passwordMinLength>
