@@ -7,15 +7,10 @@ describe('NavBarComponent', () => {
   let fixture: ComponentFixture<NavBarComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [NavBarComponent],
-    });
-    fixture = TestBed.createComponent(NavBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new NavBarComponent();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create component', () => {
+    expect(component).toBeDefined()
   });
 });

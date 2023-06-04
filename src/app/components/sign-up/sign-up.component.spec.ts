@@ -37,11 +37,11 @@ describe('SignUpComponent', () => {
     expect(spyUpdatePasswordValidator).toHaveBeenCalled();
   }));
 
-  it('should update password validators when last name changes', fakeAsync(() => {
-    const spyUpdatePasswordValidator = jest.spyOn(component, 'updatePasswordValidators');
+  it('should update password validators when last name changes, form invalid', fakeAsync(() => {
+    component.signUpForm.controls['password'].setValue('simpson123');
     component.signUpForm.controls['lastName'].setValue('Simpson');
     tick();
-    expect(spyUpdatePasswordValidator).toHaveBeenCalled();
+    expect(component.signUpForm.invalid).toBeTruthy();
   }));
 
   it('should test submit form', fakeAsync(() => {

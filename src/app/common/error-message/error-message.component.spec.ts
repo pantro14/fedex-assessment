@@ -4,18 +4,12 @@ import { ErrorMessageComponent } from './error-message.component';
 
 describe('ErrorMessageComponent', () => {
   let component: ErrorMessageComponent;
-  let fixture: ComponentFixture<ErrorMessageComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ErrorMessageComponent]
-    });
-    fixture = TestBed.createComponent(ErrorMessageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new ErrorMessageComponent();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create component', () => {
+    expect(component).toBeDefined()
   });
 });

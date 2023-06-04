@@ -1,7 +1,7 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
-const hasLowerAndUpperCase = (word: string) => {
-  return /[A-Z]/.test(word) && /[a-z]/.test(word);
+export const hasLowerAndUpperCase = (password: string) => {
+  return /[A-Z]/.test(password) && /[a-z]/.test(password);
 }
 
 export const verifyLowerAndUpperCase = (): ValidatorFn => {
@@ -10,10 +10,10 @@ export const verifyLowerAndUpperCase = (): ValidatorFn => {
   };
 }
 
-const hasForbiddenWords = (word: string, firstName: string, lastName: string) => {
+export const hasForbiddenWords = (password: string, firstName: string, lastName: string) => {
   // skip validation if first name and last name are empty string
-  const isFirstNamePresent = firstName === '' ? false : word.toLowerCase().includes(firstName.toLowerCase());
-  const isLastNamePresent = lastName === '' ? false : word.toLowerCase().includes(lastName.toLowerCase());
+  const isFirstNamePresent = firstName === '' ? false : password.toLowerCase().includes(firstName.toLowerCase());
+  const isLastNamePresent = lastName === '' ? false : password.toLowerCase().includes(lastName.toLowerCase());
   return isFirstNamePresent || isLastNamePresent;
 }
 

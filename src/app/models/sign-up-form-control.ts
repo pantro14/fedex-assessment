@@ -1,5 +1,5 @@
 import {Validators} from '@angular/forms';
-import {verifyLowerAndUpperCase} from '../utils/custom-validators/email-validators';
+import {verifyLowerAndUpperCase} from '../utils/custom-validators/password/password-validations';
 
 export const passwordValidators =  [
   Validators.required,

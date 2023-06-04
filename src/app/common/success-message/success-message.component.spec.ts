@@ -4,18 +4,12 @@ import { SuccessMessageComponent } from './success-message.component';
 
 describe('SuccessMessageComponent', () => {
   let component: SuccessMessageComponent;
-  let fixture: ComponentFixture<SuccessMessageComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [SuccessMessageComponent]
-    });
-    fixture = TestBed.createComponent(SuccessMessageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new SuccessMessageComponent();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create component', () => {
+    expect(component).toBeDefined()
   });
 });

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
-import {passwordValidators, signUpFormControl} from '../../model/sign-up-form-control';
-import {verifyForbidWords} from '../../utils/custom-validators/email-validators';
+import {passwordValidators, signUpFormControl} from '../../models/sign-up-form-control';
+import {verifyForbidWords} from '../../utils/custom-validators/password/password-validations';
 import {finalize, Observable} from 'rxjs';
-import {Registration} from '../../model/registration';
+import {Registration} from '../../models/registration';
 import {RegisterService} from '../../services/register/register.service';
 import {LetDirective} from '@ngrx/component';
 import {ErrorMessageComponent} from '../../common/error-message/error-message.component';
@@ -31,10 +31,11 @@ export class SignUpComponent {
     this.signUpForm = this.formBuilder.group(signUpFormControl)
     // Password validation must be updated every time first name and last name change
     this.firstName?.valueChanges.subscribe({
-      next: (firstName) => this.updatePasswordValidators()
+      next: () => this.updatePasswordValidators()
     });
+    // TODO: unsubscribe on destroy
     this.lastName?.valueChanges.subscribe({
-      next: (firstName) => this.updatePasswordValidators()
+      next: () => this.updatePasswordValidators()
     });
   }
 
