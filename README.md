@@ -56,7 +56,7 @@ Run `npm run lint` this will make sure the code is consistent with eslint standa
 
 ## Running unit tests 🚦
 
-Run `ng test` to execute the unit tests via [Jest](https://jestjs.io/).
+Run `npm run test` to execute the unit tests via [Jest](https://jestjs.io/).
 For maximum QA the coverage is setup to 100%.
 
 ### Code Coverage Report: 
