@@ -36,6 +36,19 @@ export class SignUpComponent implements OnDestroy {
 
   passwordType = 'password';
 
+  get firstName() {
+    return this.signUpForm.get('firstName');
+  }
+  get lastName() {
+    return this.signUpForm.get('lastName');
+  }
+  get email() {
+    return this.signUpForm.get('email');
+  }
+  get password() {
+    return this.signUpForm.get('password');
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService
@@ -48,24 +61,6 @@ export class SignUpComponent implements OnDestroy {
     this.lastNameSubscription = this.lastName?.valueChanges.subscribe({
       next: () => this.updatePasswordValidators(),
     });
-  }
-
-  ngOnDestroy() {
-    this.firstNameSubscription?.unsubscribe();
-    this.lastNameSubscription?.unsubscribe();
-  }
-
-  get firstName() {
-    return this.signUpForm.get('firstName');
-  }
-  get lastName() {
-    return this.signUpForm.get('lastName');
-  }
-  get email() {
-    return this.signUpForm.get('email');
-  }
-  get password() {
-    return this.signUpForm.get('password');
   }
 
   updatePasswordValidators(): void {
@@ -94,5 +89,10 @@ export class SignUpComponent implements OnDestroy {
         })
         .pipe(finalize(() => (this.loading = false)));
     }
+  }
+
+  ngOnDestroy() {
+    this.firstNameSubscription?.unsubscribe();
+    this.lastNameSubscription?.unsubscribe();
   }
 }
