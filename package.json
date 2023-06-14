@@ -1,6 +1,6 @@
 {
   "name": "fedex-assessment",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +8,7 @@
     "build:dev": "ng build --configuration=development",
     "deploy:dev": "npm run build:dev && firebase deploy",
     "watch": "ng build --watch --configuration development",
+    "test:update-snapshot": "jest --updateSnapshot",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
@@ -41,7 +42,6 @@
     "@angular-eslint/template-parser": "16.0.3",
     "@angular/cli": "~16.0.2",
     "@angular/compiler-cli": "^16.0.0",
-    "@types/jasmine": "~4.3.0",
     "@types/jest": "^29.5.2",
     "@typescript-eslint/eslint-plugin": "5.59.7",
     "@typescript-eslint/parser": "5.59.7",
