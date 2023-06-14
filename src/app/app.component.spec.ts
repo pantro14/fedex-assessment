@@ -1,16 +1,13 @@
 import { AppComponent } from './app.component';
-import {TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {NavBarComponent} from './common/nav-bar/nav-bar.component';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NavBarComponent } from './common/nav-bar/nav-bar.component';
 
 describe('AppComponent', () => {
-  let appComp: AppComponent;
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [
-        RouterTestingModule, NavBarComponent
-      ]
+      imports: [RouterTestingModule, NavBarComponent],
     }).compileComponents();
   });
 
