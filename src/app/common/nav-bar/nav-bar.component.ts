@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/compiler';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,6 +13,6 @@ import { CommonModule } from '@angular/common';
       <img width="150" height="150" src="assets/fedex-logo.png" alt="fedex" />
     </header>
   `,
-  styles: [],
+  styles: []
 })
 export class NavBarComponent {}

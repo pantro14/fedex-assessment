@@ -2,7 +2,7 @@ export default {
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   globals: {},
-  displayName: 'investments-credit-summary',
+  displayName: 'fedex-assessment',
   collectCoverage: true,
   coverageThreshold: {
     global: {
