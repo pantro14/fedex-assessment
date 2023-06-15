@@ -27,21 +27,40 @@ describe('SignUpComponent', () => {
     expect(component).toBeDefined();
   });
 
-  it('should update password validators when first name changes', fakeAsync(() => {
+  it('should update password validators when first and last name changes', fakeAsync(() => {
     const spyUpdatePasswordValidator = jest.spyOn(
       component,
       'updatePasswordValidators'
     );
     component.signUpForm.controls['firstName'].setValue('Homer');
+    component.signUpForm.controls['lastName'].setValue('Simpson');
     tick();
     expect(spyUpdatePasswordValidator).toHaveBeenCalled();
+    expect(component.signUpForm.controls['password'].status).toBe('INVALID');
   }));
 
-  it('should update password validators when last name changes, form invalid', fakeAsync(() => {
-    component.signUpForm.controls['password'].setValue('simpson123');
+  it('should update password validators, but first and last name are empty', fakeAsync(() => {
+    const spyUpdatePasswordValidator = jest.spyOn(
+      component,
+      'updatePasswordValidators'
+    );
+    component.signUpForm.controls['password'].setValue('simpsonA123');
+    component.signUpForm.controls['firstName'].setValue('');
+    component.signUpForm.controls['lastName'].setValue('');
+    tick();
+    expect(spyUpdatePasswordValidator).toHaveBeenCalled();
+    expect(component.signUpForm.controls['firstName'].status).toBe('INVALID');
+    expect(component.signUpForm.controls['lastName'].status).toBe('INVALID');
+    expect(component.signUpForm.controls['password'].status).toBe('VALID');
+  }));
+
+  it('should update password validators when last name changes even case sensitive', fakeAsync(() => {
+    component.signUpForm.controls['password'].setValue('simpsonA123');
+    component.signUpForm.controls['firstName'].setValue('Homer');
     component.signUpForm.controls['lastName'].setValue('Simpson');
     tick();
     expect(component.signUpForm.invalid).toBeTruthy();
+    expect(component.signUpForm.controls['password'].status).toBe('INVALID');
   }));
 
   it('should test submit form', fakeAsync(() => {
@@ -68,10 +87,8 @@ describe('SignUpComponent', () => {
   });
 
   it('should test on destroy method', () => {
-    jest.spyOn(component.firstNameSubscription, 'unsubscribe');
-    jest.spyOn(component.lastNameSubscription, 'unsubscribe');
+    jest.spyOn(component.validPasswordSubscription, 'unsubscribe');
     component.ngOnDestroy();
-    expect(component.firstNameSubscription.unsubscribe).toHaveBeenCalled();
-    expect(component.lastNameSubscription.unsubscribe).toHaveBeenCalled();
+    expect(component.validPasswordSubscription.unsubscribe).toHaveBeenCalled();
   });
 });

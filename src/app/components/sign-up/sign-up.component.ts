@@ -1,12 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
   passwordValidators,
   signUpFormControl,
 } from '../../models/sign-up-form-control';
 import { verifyForbidWords } from '../../utils/custom-validators/password/password-validations';
-import { finalize, Observable, Subscription } from 'rxjs';
+import { combineLatestWith, finalize, Observable, Subscription } from 'rxjs';
 import { Registration } from '../../models/registration';
 import { RegisterService } from '../../services/register/register.service';
 import { LetDirective } from '@ngrx/component';
@@ -30,23 +30,21 @@ export class SignUpComponent implements OnDestroy {
   signUpForm;
   registration$: Observable<Registration>;
   loading: boolean;
-
-  firstNameSubscription: Subscription | undefined;
-  lastNameSubscription: Subscription | undefined;
+  validPasswordSubscription: Subscription | undefined;
 
   passwordType = 'password';
 
   get firstName() {
-    return this.signUpForm.get('firstName');
+    return this.signUpForm.get('firstName') as FormControl;
   }
   get lastName() {
-    return this.signUpForm.get('lastName');
+    return this.signUpForm.get('lastName') as FormControl;
   }
   get email() {
-    return this.signUpForm.get('email');
+    return this.signUpForm.get('email') as FormControl;
   }
   get password() {
-    return this.signUpForm.get('password');
+    return this.signUpForm.get('password') as FormControl;
   }
 
   constructor(
@@ -54,22 +52,20 @@ export class SignUpComponent implements OnDestroy {
     private registerService: RegisterService
   ) {
     this.signUpForm = this.formBuilder.group(signUpFormControl);
+
     // Password validation must be updated every time first name and last name change
-    this.firstNameSubscription = this.firstName?.valueChanges.subscribe({
-      next: () => this.updatePasswordValidators(),
-    });
-    this.lastNameSubscription = this.lastName?.valueChanges.subscribe({
-      next: () => this.updatePasswordValidators(),
-    });
+    this.validPasswordSubscription = this.firstName.valueChanges
+      .pipe(combineLatestWith(this.lastName.valueChanges))
+      .subscribe({
+        next: ([firstName, lastName]) =>
+          this.updatePasswordValidators(firstName, lastName),
+      });
   }
 
-  updatePasswordValidators(): void {
+  updatePasswordValidators(firstName: string, lastName: string): void {
     this.password?.setValidators([
       ...passwordValidators,
-      verifyForbidWords(
-        this.firstName?.value as string,
-        this.lastName?.value as string
-      ),
+      verifyForbidWords(firstName, lastName),
     ]);
     this.password?.updateValueAndValidity();
   }
@@ -83,16 +79,15 @@ export class SignUpComponent implements OnDestroy {
       this.loading = true;
       this.registration$ = this.registerService
         .postRegistration$({
-          firstName: this.firstName?.value as string,
-          lastName: this.lastName?.value as string,
-          email: this.email?.value as string,
+          firstName: this.firstName.value,
+          lastName: this.lastName.value,
+          email: this.email.value,
         })
         .pipe(finalize(() => (this.loading = false)));
     }
   }
 
   ngOnDestroy() {
-    this.firstNameSubscription?.unsubscribe();
-    this.lastNameSubscription?.unsubscribe();
+    this.validPasswordSubscription?.unsubscribe();
   }
 }
